@@ -1,5 +1,7 @@
 @react.component
 let make = () => {
+  // Fonction pour naviguer
+
   <nav className="bg-white shadow-md">
     <div className="container mx-auto flex items-center justify-between p-4">
       <div className="flex items-center">
@@ -11,23 +13,39 @@ let make = () => {
       </div>
       <ul className="flex space-x-4">
         <li>
-          <a href="/login" className="text-gray-700 hover:text-blue-500">
-            {React.string("Connexion")}
-          </a>
+          <button
+            className="text-gray-700 hover:text-blue-500"
+           
+          >
+             {React.string("Connexion")}
+          </button>
         </li>
         <li>
-          <a href="/mon-espace" className="text-gray-700 hover:text-blue-500">
-            {React.string("Mon Navire")}
-          </a>
+          <button
+            className="text-gray-700 hover:text-blue-500"
+           
+          >
+             {React.string("Inscription")}
+          </button>
         </li>
         <li>
-          <a href="/decks" className="text-gray-700 hover:text-blue-500">
-            {React.string("Decks")}
-          </a>
+          <button
+            className="text-gray-700 hover:text-blue-500"
+         
+         
+          >
+             {React.string("Mon Navire")}
+          </button>
+        </li>
+        <li>
+          <button
+            className="text-gray-700 hover:text-blue-500"
+           
+          >
+             {React.string("Decks")}
+          </button>
         </li>
       </ul>
     </div>
   </nav>
 }
-
-

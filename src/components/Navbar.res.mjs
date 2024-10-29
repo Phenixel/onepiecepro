@@ -17,24 +17,27 @@ function Navbar(props) {
                       JsxRuntime.jsxs("ul", {
                             children: [
                               JsxRuntime.jsx("li", {
-                                    children: JsxRuntime.jsx("a", {
+                                    children: JsxRuntime.jsx("button", {
                                           children: "Connexion",
-                                          className: "text-gray-700 hover:text-blue-500",
-                                          href: "/login"
+                                          className: "text-gray-700 hover:text-blue-500"
                                         })
                                   }),
                               JsxRuntime.jsx("li", {
-                                    children: JsxRuntime.jsx("a", {
+                                    children: JsxRuntime.jsx("button", {
+                                          children: "Inscription",
+                                          className: "text-gray-700 hover:text-blue-500"
+                                        })
+                                  }),
+                              JsxRuntime.jsx("li", {
+                                    children: JsxRuntime.jsx("button", {
                                           children: "Mon Navire",
-                                          className: "text-gray-700 hover:text-blue-500",
-                                          href: "/mon-espace"
+                                          className: "text-gray-700 hover:text-blue-500"
                                         })
                                   }),
                               JsxRuntime.jsx("li", {
-                                    children: JsxRuntime.jsx("a", {
+                                    children: JsxRuntime.jsx("button", {
                                           children: "Decks",
-                                          className: "text-gray-700 hover:text-blue-500",
-                                          href: "/decks"
+                                          className: "text-gray-700 hover:text-blue-500"
                                         })
                                   })
                             ],
