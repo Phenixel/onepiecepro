@@ -9,17 +9,20 @@ function Home(props) {
               children: JsxRuntime.jsxs("div", {
                     children: [
                       JsxRuntime.jsx("h1", {
-                            children: "Bienvenue sur One Piece CG Pro"
+                            children: "Bienvenue sur One Piece CG Pro",
+                            className: "text-3xl font-bold text-gray-800 mb-4"
                           }),
                       JsxRuntime.jsx("p", {
-                            children: "One Piece CG Pro est un site communautaire pour les joueurs de One Piece Card Game. Vous pouvez y créer vos decks, les partager avec la communauté et consulter les decks des autres joueurs."
+                            children: "One Piece CG Pro est un site communautaire pour les joueurs de One Piece Card Game. Vous pouvez y créer vos decks, les partager avec la communauté et consulter les decks des autres joueurs.",
+                            className: "text-lg text-gray-600 mb-4"
                           }),
                       JsxRuntime.jsx("p", {
-                            children: "Pour commencer, vous pouvez vous connecter ou créer un compte pour accéder à votre espace personnel."
+                            children: "Pour commencer, vous pouvez vous connecter ou créer un compte pour accéder à votre espace personnel.",
+                            className: "text-lg text-gray-600 mb-8"
                           }),
                       JsxRuntime.jsx(ListDeck.make, {})
                     ],
-                    className: "home"
+                    className: "home text-center p-8 bg-gray-100"
                   })
             });
 }

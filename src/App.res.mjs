@@ -2,6 +2,7 @@
 
 import * as Home from "./pages/Home.res.mjs";
 import * as User from "./pages/User.res.mjs";
+import * as DetailDeck from "./pages/DetailDeck.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.mjs";
 
@@ -11,16 +12,27 @@ function App(props) {
   if (!match) {
     return JsxRuntime.jsx(Home.make, {});
   }
-  if (match.hd !== "user") {
-    return JsxRuntime.jsx(Home.make, {});
-  }
-  var match$1 = match.tl;
-  if (match$1 && !match$1.tl) {
-    return JsxRuntime.jsx(User.make, {
-                id: match$1.hd
-              });
-  } else {
-    return JsxRuntime.jsx(Home.make, {});
+  switch (match.hd) {
+    case "deck" :
+        var match$1 = match.tl;
+        if (match$1 && !match$1.tl) {
+          return JsxRuntime.jsx(DetailDeck.make, {
+                      slug: match$1.hd
+                    });
+        } else {
+          return JsxRuntime.jsx(Home.make, {});
+        }
+    case "user" :
+        var match$2 = match.tl;
+        if (match$2 && !match$2.tl) {
+          return JsxRuntime.jsx(User.make, {
+                      id: match$2.hd
+                    });
+        } else {
+          return JsxRuntime.jsx(Home.make, {});
+        }
+    default:
+      return JsxRuntime.jsx(Home.make, {});
   }
 }
 
