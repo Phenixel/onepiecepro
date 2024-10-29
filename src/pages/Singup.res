@@ -1,6 +1,7 @@
 @react.component
 let make = () => {
   <Layout>
+  <h1>  {React.string("Page d'Inscription")} </h1>
   // Rendu du composant
   <div className="flex flex-col max-w-md mx-auto">
     <form className="flex flex-col" >

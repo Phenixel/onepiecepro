@@ -15,23 +15,24 @@ let make = () => {
         <li>
           <button
             className="text-gray-700 hover:text-blue-500"
+            onClick={_ => RescriptReactRouter.push("/connexion")}
            
           >
-             {React.string("Connexion")}
+             {React.string("Sing Up")}
           </button>
         </li>
         <li>
           <button
             className="text-gray-700 hover:text-blue-500"
-           
+            onClick={_ => RescriptReactRouter.push("/login")}
           >
-             {React.string("Inscription")}
+             {React.string("Login")}
           </button>
         </li>
         <li>
           <button
             className="text-gray-700 hover:text-blue-500"
-         
+          onClick={_ => RescriptReactRouter.push("/mon-navire")}
          
           >
              {React.string("Mon Navire")}
@@ -40,7 +41,7 @@ let make = () => {
         <li>
           <button
             className="text-gray-700 hover:text-blue-500"
-           
+            onClick={_ => RescriptReactRouter.push("/decks")}
           >
              {React.string("Decks")}
           </button>

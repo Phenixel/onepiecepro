@@ -12,22 +12,16 @@ function App(props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
   var match = url.path;
   if (!match) {
-    return JsxRuntime.jsx(NotFound.make, {});
+    return JsxRuntime.jsx(Home.make, {});
   }
   switch (match.hd) {
-    case "" :
-        if (match.tl) {
-          return JsxRuntime.jsx(NotFound.make, {});
-        } else {
-          return JsxRuntime.jsx(Home.make, {});
-        }
     case "connexion" :
         if (match.tl) {
           return JsxRuntime.jsx(NotFound.make, {});
         } else {
           return JsxRuntime.jsx(Login.make, {});
         }
-    case "inscription" :
+    case "login" :
         if (match.tl) {
           return JsxRuntime.jsx(NotFound.make, {});
         } else {
