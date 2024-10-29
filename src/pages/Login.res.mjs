@@ -2,12 +2,14 @@
 
 import * as Layout from "../Layout.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
+import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.mjs";
 
 function Login(props) {
   return JsxRuntime.jsxs(Layout.make, {
               children: [
                 JsxRuntime.jsx("h1", {
-                      children: "Page de Connexion"
+                      children: "Connectez-vous",
+                      className: "text-3xl font-bold text-gray-800 mb-4 text-center"
                     }),
                 JsxRuntime.jsx("div", {
                       children: JsxRuntime.jsxs("form", {
@@ -23,14 +25,17 @@ function Login(props) {
                                     type: "password"
                                   }),
                               JsxRuntime.jsx("button", {
-                                    children: "S'inscrire",
+                                    children: "Se connecter",
                                     className: "p-2 bg-blue-500 text-white rounded",
-                                    type: "submit"
+                                    type: "submit",
+                                    onClick: (function (param) {
+                                        RescriptReactRouter.push("/");
+                                      })
                                   })
                             ],
                             className: "flex flex-col"
                           }),
-                      className: "flex flex-col max-w-md mx-auto"
+                      className: "flex flex-col max-w-md mx-auto mt-20 mb-20"
                     })
               ]
             });

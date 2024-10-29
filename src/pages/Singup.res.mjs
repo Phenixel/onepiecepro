@@ -2,12 +2,14 @@
 
 import * as Layout from "../Layout.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
+import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.mjs";
 
 function Singup(props) {
   return JsxRuntime.jsxs(Layout.make, {
               children: [
                 JsxRuntime.jsx("h1", {
-                      children: "Page d'Inscription"
+                      children: "Inscrivez-vous",
+                      className: "text-3xl font-bold text-gray-800 mb-4 text-center"
                     }),
                 JsxRuntime.jsx("div", {
                       children: JsxRuntime.jsxs("form", {
@@ -19,18 +21,31 @@ function Singup(props) {
                                   }),
                               JsxRuntime.jsx("input", {
                                     className: "mb-4 p-2 border border-gray-300 rounded",
+                                    placeholder: "Email",
+                                    type: "mail"
+                                  }),
+                              JsxRuntime.jsx("input", {
+                                    className: "mb-4 p-2 border border-gray-300 rounded",
                                     placeholder: "Mot de passe",
+                                    type: "password"
+                                  }),
+                              JsxRuntime.jsx("input", {
+                                    className: "mb-4 p-2 border border-gray-300 rounded",
+                                    placeholder: "Confirmation du Mot de passe",
                                     type: "password"
                                   }),
                               JsxRuntime.jsx("button", {
                                     children: "S'inscrire",
-                                    className: "p-2 bg-blue-500 text-white rounded",
-                                    type: "submit"
+                                    className: "p-2 bg-blue-500 text-white rounded  ",
+                                    type: "submit",
+                                    onClick: (function (param) {
+                                        RescriptReactRouter.push("/connexion");
+                                      })
                                   })
                             ],
                             className: "flex flex-col"
                           }),
-                      className: "flex flex-col max-w-md mx-auto"
+                      className: "flex flex-col max-w-md mx-auto mt-20 mb-20"
                     })
               ]
             });

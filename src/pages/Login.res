@@ -1,9 +1,11 @@
 @react.component
 let make = () => {
   <Layout>
-    <h1>  {React.string("Page de Connexion")} </h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">
+        {React.string("Connectez-vous")}
+      </h1>
   // Rendu du composant
-  <div className="flex flex-col max-w-md mx-auto">
+  <div className="flex flex-col max-w-md mx-auto mt-20 mb-20" >
     <form className="flex flex-col" >
       <input
         className="mb-4 p-2 border border-gray-300 rounded"
@@ -15,8 +17,9 @@ let make = () => {
         type_="password"
         placeholder="Mot de passe"
       />
-      <button className="p-2 bg-blue-500 text-white rounded" type_="submit">
-        {React.string("S'inscrire")}
+      <button className="p-2 bg-blue-500 text-white rounded" type_="submit" onClick={_ => RescriptReactRouter.push("/")}
+>
+        {React.string("Se connecter")}
       </button>
     </form>
   </div>
