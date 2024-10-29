@@ -7,7 +7,7 @@ function Footer(props) {
               children: JsxRuntime.jsxs("div", {
                     children: [
                       JsxRuntime.jsx("p", {
-                            children: "© 2023 Your Company. All rights reserved.",
+                            children: "© 2024 OnePieceCGPro. All rights reserved.",
                             className: "text-sm"
                           }),
                       JsxRuntime.jsxs("div", {

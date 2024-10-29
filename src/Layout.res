@@ -4,6 +4,7 @@
 let make = (~children) => {
   <div>
     <Navbar />
-    {children}
+    <div className="container mt-5 mb-5 mx-auto"> {children} </div>
+    <Footer />
   </div>
 }
