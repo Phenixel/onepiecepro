@@ -39,7 +39,7 @@ function Singup(props) {
                                     className: "p-2 bg-blue-500 text-white rounded  ",
                                     type: "submit",
                                     onClick: (function (param) {
-                                        RescriptReactRouter.push("/connexion");
+                                        RescriptReactRouter.push("/login");
                                       })
                                   })
                             ],

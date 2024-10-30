@@ -27,7 +27,7 @@ let make = () => {
         type_="password"
         placeholder="Confirmation du Mot de passe"
       />
-      <button className="p-2 bg-blue-500 text-white rounded  " type_="submit"onClick={_ => RescriptReactRouter.push("/connexion")}
+      <button className="p-2 bg-blue-500 text-white rounded  " type_="submit"onClick={_ => RescriptReactRouter.push("/login")}
 >
         {React.string("S'inscrire")}
       </button>
