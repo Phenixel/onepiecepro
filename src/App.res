@@ -27,4 +27,3 @@ let make = () => {
     }}
   </LoginContext.DefaultProvider>
 }
-

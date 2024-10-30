@@ -2,6 +2,7 @@
 
 import * as Home from "./pages/Home.res.mjs";
 import * as User from "./pages/User.res.mjs";
+import * as Decks from "./pages/Decks.res.mjs";
 import * as Login from "./pages/Login.res.mjs";
 import * as Singup from "./pages/Singup.res.mjs";
 import * as NotFound from "./pages/NotFound.res.mjs";
@@ -39,6 +40,11 @@ function App(props) {
                   errorType: "notFound"
                 });
           }
+          break;
+      case "decks" :
+          tmp = match.tl ? JsxRuntime.jsx(NotFound.make, {
+                  errorType: "notFound"
+                }) : JsxRuntime.jsx(Decks.make, {});
           break;
       case "login" :
           tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {

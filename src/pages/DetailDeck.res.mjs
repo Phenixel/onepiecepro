@@ -14,7 +14,8 @@ function DetailDeck(props) {
               children: deck !== undefined ? JsxRuntime.jsxs("div", {
                       children: [
                         JsxRuntime.jsx("h1", {
-                              children: deck.name
+                              children: deck.name,
+                              className: "text-3xl font-bold text-gray-800 mb-4 text-center"
                             }),
                         JsxRuntime.jsx("div", {
                               children: deck.cards.map(function (card) {
