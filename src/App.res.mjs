@@ -12,35 +12,55 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.re
 
 function App(props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
-  var match = url.path;
+  var match = LoginContext.useContext();
+  var isLogged = match.isLogged;
+  var match$1 = url.path;
   var tmp;
-  if (match) {
-    switch (match.hd) {
+  if (match$1) {
+    switch (match$1.hd) {
       case "connexion" :
-          tmp = match.tl ? JsxRuntime.jsx(NotFound.make, {
+          tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 }) : JsxRuntime.jsx(Singup.make, {});
           break;
       case "deck" :
-          var match$1 = match.tl;
-          tmp = match$1 && !match$1.tl ? JsxRuntime.jsx(DetailDeck.make, {
-                  slug: match$1.hd
-                }) : JsxRuntime.jsx(NotFound.make, {
+          var match$2 = match$1.tl;
+          if (match$2 && !match$2.tl) {
+            if (isLogged) {
+              tmp = JsxRuntime.jsx(DetailDeck.make, {
+                    slug: match$2.hd
+                  });
+            } else {
+              RescriptReactRouter.push("/login");
+              tmp = JsxRuntime.jsx(Login.make, {});
+            }
+          } else {
+            tmp = JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 });
+          }
           break;
       case "login" :
-          tmp = match.tl ? JsxRuntime.jsx(NotFound.make, {
+          tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 }) : JsxRuntime.jsx(Login.make, {});
           break;
       case "user" :
-          var match$2 = match.tl;
-          tmp = match$2 && !match$2.tl ? JsxRuntime.jsx(User.make, {
-                  id: match$2.hd
-                }) : JsxRuntime.jsx(NotFound.make, {
+          var match$3 = match$1.tl;
+          if (match$3 && !match$3.tl) {
+            if (isLogged) {
+              tmp = JsxRuntime.jsx(User.make, {
+                    id: match$3.hd
+                  });
+            } else {
+              RescriptReactRouter.push("/login");
+              tmp = JsxRuntime.jsx(Login.make, {});
+            }
+          } else {
+            tmp = JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 });
+          }
           break;
       default:
         tmp = JsxRuntime.jsx(NotFound.make, {
