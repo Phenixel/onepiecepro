@@ -2,28 +2,37 @@
 
 import * as Layout from "../Layout.res.mjs";
 import * as ListDeck from "../components/ListDeck.res.mjs";
+import * as LoginContext from "../components/LoginContext.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 
 function Decks(props) {
-  return JsxRuntime.jsx(Layout.make, {
-              children: JsxRuntime.jsxs("div", {
-                    children: [
-                      JsxRuntime.jsx("h1", {
-                            children: "Liste des decks",
-                            className: "text-3xl font-bold text-gray-800 mb-4"
-                          }),
-                      JsxRuntime.jsx("p", {
-                            children: "Retrouvez ici la liste de tous les decks créés par la communauté. Vous pouvez les consulter, ou même créer le votre",
-                            className: "text-lg text-gray-600 mb-4"
-                          }),
-                      JsxRuntime.jsx("button", {
-                            children: "Créer un deck",
-                            className: "p-2 bg-blue-500 text-white rounded mb-2"
-                          }),
-                      JsxRuntime.jsx(ListDeck.make, {})
-                    ],
-                    className: "home text-center p-8 bg-gray-100"
-                  })
+  var match = LoginContext.useContext();
+  return JsxRuntime.jsxs(Layout.make, {
+              children: [
+                JsxRuntime.jsx("span", {
+                      children: "isLogged: " + (
+                        match.isLogged ? "true" : "false"
+                      )
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h1", {
+                              children: "Liste des decks",
+                              className: "text-3xl font-bold text-gray-800 mb-4"
+                            }),
+                        JsxRuntime.jsx("p", {
+                              children: "Retrouvez ici la liste de tous les decks créés par la communauté. Vous pouvez les consulter, ou même créer le votre",
+                              className: "text-lg text-gray-600 mb-4"
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "Créer un deck",
+                              className: "p-2 bg-blue-500 text-white rounded mb-2"
+                            }),
+                        JsxRuntime.jsx(ListDeck.make, {})
+                      ],
+                      className: "home text-center p-8 bg-gray-100"
+                    })
+              ]
             });
 }
 

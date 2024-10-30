@@ -1,6 +1,8 @@
 @react.component
 let make = () => {
+  let {isLogged} = LoginContext.useContext()
   <Layout>
+  <span> {React.string("isLogged: " ++ (isLogged ? "true" : "false"))} </span>
     <div className="home text-center p-8 bg-gray-100">
       <h1 className="text-3xl font-bold text-gray-800 mb-4"> {React.string("Liste des decks")} </h1>
       <p className="text-lg text-gray-600 mb-4">
