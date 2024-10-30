@@ -5,6 +5,9 @@ let make = () => {
   switch url.path {
   | list{"user", id} => <User id />
   | list{"deck", slug} => <DetailDeck slug />
-  | _ => <Home />
+  | list{"connexion"} => <Login />
+  | list{"login"} => <Singup />
+  | list{} => <Home />
+  | _ => <NotFound />
   }
 }
