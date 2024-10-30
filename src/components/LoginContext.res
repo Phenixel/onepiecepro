@@ -2,12 +2,12 @@
 
 type loginContext = {
   isLogged: bool,
-  login: (string, string) => unit,
+  login: (string, string) => bool,
 };
 
 let context = React.createContext({
   isLogged: false,
-  login: (_username, _password) => (),
+  login: (_username, _password) => false,
 });
 
 module Provider = {
@@ -23,16 +23,21 @@ module DefaultProvider = {
       isLogged,
       login: (username, password) => {
         Console.log("plop")
-        if (username === "admin" && password === "admin") {
-          setIsLogged(_ => true);
-        }
+        UsersData.users -> Array.some(
+            user => user.name == username && user.password == password
+            ) -> (result => {
+            if (result) {
+                setIsLogged(_prev => true);
+            }
+            result;
+            }
+        )
       },
     }}>
       {children}
     </Provider>
   }
 }
-
 let useContext = () => {
   React.useContext(context);
 };
