@@ -1,5 +1,6 @@
 @react.component
 let make = () => {
+  let {login} = LoginContext.useContext()
   <Layout>
       <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">
         {React.string("Connectez-vous")}
@@ -17,10 +18,14 @@ let make = () => {
         type_="password"
         placeholder="Mot de passe"
       />
-      <button className="p-2 bg-blue-500 text-white rounded" type_="submit" onClick={_ => RescriptReactRouter.push("/")}
->
-        {React.string("Se connecter")}
-      </button>
+        <button className="p-2 bg-blue-500 text-white rounded" type_="submit" onClick={_ => {login("admin", "admin")
+        RescriptReactRouter.push("/")
+        }}>
+            {React.string("Login")}
+        </button>
+     // <button className="p-2 bg-blue-500 text-white rounded" type_="submit" onClick={_ => RescriptReactRouter.push("/")}>
+      //  {React.string("Se connecter")}
+    // </button>
     </form>
   </div>
   </Layout>

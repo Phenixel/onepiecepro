@@ -4,11 +4,13 @@
 var users = [
   {
     id: "1",
-    name: "John Doe"
+    name: "John Doe",
+    password: "password"
   },
   {
     id: "2",
-    name: "Jane Smith"
+    name: "Jane Smith",
+    password: "securePass"
   }
 ];
 
