@@ -18,7 +18,9 @@ function App(props) {
   switch (match.hd) {
     case "connexion" :
         if (match.tl) {
-          return JsxRuntime.jsx(NotFound.make, {});
+          return JsxRuntime.jsx(NotFound.make, {
+                      errorType: "notFound"
+                    });
         } else {
           return JsxRuntime.jsx(Login.make, {});
         }
@@ -29,11 +31,15 @@ function App(props) {
                       slug: match$1.hd
                     });
         } else {
-          return JsxRuntime.jsx(NotFound.make, {});
+          return JsxRuntime.jsx(NotFound.make, {
+                      errorType: "notFound"
+                    });
         }
     case "login" :
         if (match.tl) {
-          return JsxRuntime.jsx(NotFound.make, {});
+          return JsxRuntime.jsx(NotFound.make, {
+                      errorType: "notFound"
+                    });
         } else {
           return JsxRuntime.jsx(Singup.make, {});
         }
@@ -44,10 +50,14 @@ function App(props) {
                       id: match$2.hd
                     });
         } else {
-          return JsxRuntime.jsx(NotFound.make, {});
+          return JsxRuntime.jsx(NotFound.make, {
+                      errorType: "notFound"
+                    });
         }
     default:
-      return JsxRuntime.jsx(NotFound.make, {});
+      return JsxRuntime.jsx(NotFound.make, {
+                  errorType: "notFound"
+                });
   }
 }
 
