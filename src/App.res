@@ -8,6 +8,7 @@ let make = () => {
     | list{"user", id} => <User id />
     | list{"connexion"} => <Singup />
     | list{"deck", slug} => <DetailDeck slug />
+    | list{"decks"} => <Decks />
     | list{} => <Home />
     | _ => <NotFound errorType=#notFound />
     }}
