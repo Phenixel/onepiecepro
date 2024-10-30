@@ -5,6 +5,7 @@ import * as User from "./pages/User.res.mjs";
 import * as Login from "./pages/Login.res.mjs";
 import * as Singup from "./pages/Singup.res.mjs";
 import * as NotFound from "./pages/NotFound.res.mjs";
+import * as DetailDeck from "./pages/DetailDeck.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.mjs";
 
@@ -21,6 +22,15 @@ function App(props) {
         } else {
           return JsxRuntime.jsx(Login.make, {});
         }
+    case "deck" :
+        var match$1 = match.tl;
+        if (match$1 && !match$1.tl) {
+          return JsxRuntime.jsx(DetailDeck.make, {
+                      slug: match$1.hd
+                    });
+        } else {
+          return JsxRuntime.jsx(NotFound.make, {});
+        }
     case "login" :
         if (match.tl) {
           return JsxRuntime.jsx(NotFound.make, {});
@@ -28,10 +38,10 @@ function App(props) {
           return JsxRuntime.jsx(Singup.make, {});
         }
     case "user" :
-        var match$1 = match.tl;
-        if (match$1 && !match$1.tl) {
+        var match$2 = match.tl;
+        if (match$2 && !match$2.tl) {
           return JsxRuntime.jsx(User.make, {
-                      id: match$1.hd
+                      id: match$2.hd
                     });
         } else {
           return JsxRuntime.jsx(NotFound.make, {});
