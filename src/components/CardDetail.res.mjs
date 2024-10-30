@@ -36,23 +36,27 @@ function CardDetail(props) {
                         isExpanded ? JsxRuntime.jsxs("div", {
                                 children: [
                                   JsxRuntime.jsx("h2", {
-                                        children: card.name
+                                        children: card.name,
+                                        className: "text-2xl font-bold mb-4"
                                       }),
                                   JsxRuntime.jsx("p", {
-                                        children: "Cost: " + String(card.cost)
+                                        children: "Cost: " + String(card.cost),
+                                        className: "text-lg mb-2"
                                       }),
                                   JsxRuntime.jsx("p", {
-                                        children: "Power: " + String(card.power)
+                                        children: "Power: " + String(card.power),
+                                        className: "text-lg mb-2"
                                       }),
                                   JsxRuntime.jsx("p", {
-                                        children: "Effect: " + card.effect
+                                        children: "Effect: " + card.effect,
+                                        className: "text-lg"
                                       })
                                 ],
-                                className: "card-details"
+                                className: "card-details p-4"
                               }) : null
                       ],
                       className: "card-container cursor-pointer " + (
-                        isExpanded ? "expanded" : "collapsed"
+                        isExpanded ? "expanded" : "collapsed hover:scale-105"
                       ),
                       onClick: (function (param) {
                           setIsExpanded(function (prev) {
