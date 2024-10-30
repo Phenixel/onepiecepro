@@ -8,6 +8,6 @@ let make = () => {
   | list{"connexion"} => <Login />
   | list{"login"} => <Singup />
   | list{} => <Home />
-  | _ => <NotFound />
+  | _ => <NotFound errorType=#notFound />
   }
 }

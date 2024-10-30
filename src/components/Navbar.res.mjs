@@ -13,7 +13,10 @@ function Navbar(props) {
                                   alt: "One Piece CG Pro Logo",
                                   src: "https://static.wixstatic.com/media/57a197_e334385962ac4203abe6390f3b6ff4c6~mv2.png"
                                 }),
-                            className: "flex items-center"
+                            className: "flex items-center cursor-pointer",
+                            onClick: (function (param) {
+                                RescriptReactRouter.push("/");
+                              })
                           }),
                       JsxRuntime.jsxs("ul", {
                             children: [
