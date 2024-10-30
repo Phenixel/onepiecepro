@@ -2,12 +2,20 @@
 
 type loginContext = {
   isLogged: bool,
+<<<<<<< Updated upstream
   login: (string, string) => bool,
+=======
+  login: (string, string) => unit,
+>>>>>>> Stashed changes
 };
 
 let context = React.createContext({
   isLogged: false,
+<<<<<<< Updated upstream
   login: (_username, _password) => false,
+=======
+  login: (_username, _password) => (),
+>>>>>>> Stashed changes
 });
 
 module Provider = {
@@ -23,6 +31,7 @@ module DefaultProvider = {
       isLogged,
       login: (username, password) => {
         Console.log("plop")
+<<<<<<< Updated upstream
         UsersData.users -> Array.some(
             user => user.name == username && user.password == password
             ) -> (result => {
@@ -32,12 +41,21 @@ module DefaultProvider = {
             result;
             }
         )
+=======
+        if (username === "admin" && password === "admin") {
+          setIsLogged(_ => true);
+        }
+>>>>>>> Stashed changes
       },
     }}>
       {children}
     </Provider>
   }
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 let useContext = () => {
   React.useContext(context);
 };

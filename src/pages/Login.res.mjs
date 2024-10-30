@@ -9,6 +9,7 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.re
 function Login(props) {
   var match = LoginContext.useContext();
   var login = match.login;
+<<<<<<< Updated upstream
   var match$1 = React.useState(function () {
         return "";
       });
@@ -34,6 +35,8 @@ function Login(props) {
   var handlePasswordChange = function ($$event) {
     setPassword($$event.target.value);
   };
+=======
+>>>>>>> Stashed changes
   return JsxRuntime.jsxs(Layout.make, {
               children: [
                 JsxRuntime.jsx("h1", {
@@ -60,7 +63,15 @@ function Login(props) {
                               JsxRuntime.jsx("button", {
                                     children: "Login",
                                     className: "p-2 bg-blue-500 text-white rounded",
+<<<<<<< Updated upstream
                                     type: "submit"
+=======
+                                    type: "submit",
+                                    onClick: (function (param) {
+                                        login("admin", "admin");
+                                        RescriptReactRouter.push("/");
+                                      })
+>>>>>>> Stashed changes
                                   })
                             ],
                             className: "flex flex-col",
