@@ -27,4 +27,3 @@ dist-ssr
 /lib/
 .bsb.lock
 .merlin
-*.mjs
