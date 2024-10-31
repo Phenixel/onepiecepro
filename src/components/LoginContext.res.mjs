@@ -28,7 +28,6 @@ function LoginContext$DefaultProvider(props) {
               value: {
                 isLogged: isLogged,
                 login: (function (username, password) {
-                    console.log("plop");
                     var result = UsersData.users.some(function (user) {
                           if (user.name === username) {
                             return user.password === password;
@@ -37,6 +36,7 @@ function LoginContext$DefaultProvider(props) {
                           }
                         });
                     if (result) {
+                      console.log("Logged in");
                       setIsLogged(function (_prev) {
                             return true;
                           });

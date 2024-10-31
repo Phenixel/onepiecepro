@@ -6,13 +6,7 @@ let make = () => {
 
   let handleSubmit = (event: ReactEvent.Form.t) => {
     ReactEvent.Form.preventDefault(event)
-
-    if (login(username, password)) {
-      
-      RescriptReactRouter.push("/")
-    } else {
-      Js.log("Invalid credentials")
-    }
+    let _ = login(username, password)
   }
 
   let handleUsernameChange = event => setUsername(ReactEvent.Form.target(event)["value"])

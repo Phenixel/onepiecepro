@@ -1,5 +1,3 @@
-// Fichier LoginContext.res
-
 type loginContext = {
   isLogged: bool,
   login: (string, string) => bool,
@@ -22,11 +20,11 @@ module DefaultProvider = {
     <Provider value={{
       isLogged,
       login: (username, password) => {
-        Console.log("plop")
         UsersData.users -> Array.some(
             user => user.name == username && user.password == password
             ) -> (result => {
             if (result) {
+              Console.log("Logged in");
                 setIsLogged(_prev => true);
             }
             result;

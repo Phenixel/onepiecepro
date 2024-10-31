@@ -4,7 +4,6 @@ import * as React from "react";
 import * as Layout from "../Layout.res.mjs";
 import * as LoginContext from "../components/LoginContext.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
-import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.mjs";
 
 function Login(props) {
   var match = LoginContext.useContext();
@@ -21,12 +20,7 @@ function Login(props) {
   var password = match$2[0];
   var handleSubmit = function ($$event) {
     $$event.preventDefault();
-    if (login(username, password)) {
-      return RescriptReactRouter.push("/");
-    } else {
-      console.log("Invalid credentials");
-      return ;
-    }
+    login(username, password);
   };
   var handleUsernameChange = function ($$event) {
     setUsername($$event.target.value);

@@ -5,6 +5,6 @@ type user = {
 }
 
 let users: array<user> = [
-  {id: "1", name: "John Doe", password: "password"},
+  {id: "1", name: "user", password: "user"},
   {id: "2", name: "Jane Smith", password: "securePass"},
 ]

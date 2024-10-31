@@ -4,8 +4,8 @@
 var users = [
   {
     id: "1",
-    name: "John Doe",
-    password: "password"
+    name: "user",
+    password: "user"
   },
   {
     id: "2",

@@ -1,8 +1,9 @@
 @react.component
 let make = (~slug: string) => {
   let deck = DeckData.decks->Array.find(deck => deck.slug == slug)
-
+  let {isLogged} = LoginContext.useContext()
   <Layout>
+  <span> {React.string("isLogged: " ++ (isLogged ? "true" : "false"))} </span>
     {switch deck {
     | Some(deck) =>
       <div>
