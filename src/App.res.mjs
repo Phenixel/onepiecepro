@@ -3,6 +3,7 @@
 import * as Home from "./pages/Home.res.mjs";
 import * as Decks from "./pages/Decks.res.mjs";
 import * as Login from "./pages/Login.res.mjs";
+import * as PopUp from "./components/PopUp.res.mjs";
 import * as Singup from "./pages/Singup.res.mjs";
 import * as NotFound from "./pages/NotFound.res.mjs";
 import * as DetailDeck from "./pages/DetailDeck.res.mjs";
@@ -14,6 +15,9 @@ function App(props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
   var match = LoginContext.useContext();
   var isLogged = match.isLogged;
+  var handleRedirectToLogin = function () {
+    RescriptReactRouter.push("/login");
+  };
   var match$1 = url.path;
   var tmp;
   if (match$1) {
@@ -28,7 +32,10 @@ function App(props) {
           tmp = match$2 && !match$2.tl ? (
               isLogged ? JsxRuntime.jsx(DetailDeck.make, {
                       slug: match$2.hd
-                    }) : JsxRuntime.jsx(Login.make, {})
+                    }) : JsxRuntime.jsx(PopUp.make, {
+                      message: "Vous devez vous connecter",
+                      onClose: handleRedirectToLogin
+                    })
             ) : JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 });
@@ -37,7 +44,10 @@ function App(props) {
           tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 }) : (
-              isLogged ? JsxRuntime.jsx(Decks.make, {}) : JsxRuntime.jsx(Login.make, {})
+              isLogged ? JsxRuntime.jsx(Decks.make, {}) : JsxRuntime.jsx(PopUp.make, {
+                      message: "Vous devez vous connecter",
+                      onClose: handleRedirectToLogin
+                    })
             );
           break;
       case "login" :
