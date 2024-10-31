@@ -2,14 +2,10 @@
 
 @react.component
 let make = () => {
-  let handleRedirectToLogin = () => {
-    RescriptReactRouter.push("/login")
-  }
-
   <Layout
-    header={<div className="hero-section">
+    header={<div className="hero-section max-h-80">
       <img
-        src="public/assets/Thousand Sunny One Piece.jpg" alt="Hero Image" className="hero-image"
+        src="public/assets/One Piece wallpaper.jpg" alt="Hero Image" className="hero-image-decks"
       />
       <div className="hero-text">
         <h1 className="text-5xl font-bold text-white mb-4 animate-fade-in">
