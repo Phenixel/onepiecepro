@@ -2,12 +2,17 @@
 let make = () => {
   let url = RescriptReactRouter.useUrl()
   <LoginContext.DefaultProvider>
-    {
-      switch url.path {
+    {switch url.path {
     | list{"login"} => <Login />
     | list{"connexion"} => <Singup />
-    | list{"deck", slug} => <ProtectedRoute><DetailDeck slug /></ProtectedRoute>
-    | list{"decks"} => <ProtectedRoute><Decks/></ProtectedRoute>
+    | list{"deck", slug} =>
+      <ProtectedRoute>
+        <DetailDeck slug />
+      </ProtectedRoute>
+    | list{"decks"} =>
+      <ProtectedRoute>
+        <Decks />
+      </ProtectedRoute>
     | list{} => <Home />
     | _ => <NotFound errorType=#notFound />
     }}
