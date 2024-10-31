@@ -4,7 +4,7 @@ let make = (~deck: DeckData.deck) => {
     deck.cards
     ->Array.find(card => card.typeCard == CardData.Leader)
     ->Belt.Option.map(leaderCard => leaderCard.imageUrl)
-    ->Belt.Option.getWithDefault("default-image-url.jpg") // Utilisez une image par défaut si aucun leader n'est trouvé
+    ->Belt.Option.getWithDefault("default-image-url.jpg") 
 
   let colorNames =
     deck.cards
