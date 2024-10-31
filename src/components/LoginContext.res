@@ -24,6 +24,7 @@ module DefaultProvider = {
             user => user.name == username && user.password == password
             ) -> (result => {
             if (result) {
+              Console.log("Logged in");
                 setIsLogged(_prev => true);
             }
             result;
