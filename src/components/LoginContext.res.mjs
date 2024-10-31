@@ -36,6 +36,7 @@ function LoginContext$DefaultProvider(props) {
                           }
                         });
                     if (result) {
+                      console.log("Logged in");
                       setIsLogged(function (_prev) {
                             return true;
                           });

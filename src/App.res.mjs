@@ -7,42 +7,40 @@ import * as Singup from "./pages/Singup.res.mjs";
 import * as NotFound from "./pages/NotFound.res.mjs";
 import * as DetailDeck from "./pages/DetailDeck.res.mjs";
 import * as LoginContext from "./components/LoginContext.res.mjs";
+import * as ProtectedRoute from "./components/ProtectedRoute.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.mjs";
 
 function App(props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
-  var match = LoginContext.useContext();
-  var isLogged = match.isLogged;
-  console.log(isLogged ? "true" : "false");
-  var match$1 = url.path;
+  var match = url.path;
   var tmp;
-  if (match$1) {
-    switch (match$1.hd) {
+  if (match) {
+    switch (match.hd) {
       case "connexion" :
-          tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {
+          tmp = match.tl ? JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 }) : JsxRuntime.jsx(Singup.make, {});
           break;
       case "deck" :
-          var match$2 = match$1.tl;
-          tmp = match$2 && !match$2.tl ? (
-              isLogged ? JsxRuntime.jsx(DetailDeck.make, {
-                      slug: match$2.hd
-                    }) : JsxRuntime.jsx(Login.make, {})
-            ) : JsxRuntime.jsx(NotFound.make, {
+          var match$1 = match.tl;
+          tmp = match$1 && !match$1.tl ? JsxRuntime.jsx(ProtectedRoute.make, {
+                  children: JsxRuntime.jsx(DetailDeck.make, {
+                        slug: match$1.hd
+                      })
+                }) : JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 });
           break;
       case "decks" :
-          tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {
+          tmp = match.tl ? JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
-                }) : (
-              isLogged ? JsxRuntime.jsx(Decks.make, {}) : JsxRuntime.jsx(Login.make, {})
-            );
+                }) : JsxRuntime.jsx(ProtectedRoute.make, {
+                  children: JsxRuntime.jsx(Decks.make, {})
+                });
           break;
       case "login" :
-          tmp = match$1.tl ? JsxRuntime.jsx(NotFound.make, {
+          tmp = match.tl ? JsxRuntime.jsx(NotFound.make, {
                   errorType: "notFound"
                 }) : JsxRuntime.jsx(Login.make, {});
           break;
