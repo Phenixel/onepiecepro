@@ -18,7 +18,7 @@ let make = (~deck: DeckData.deck) => {
   let handleClick = () => RescriptReactRouter.push("/deck/" ++ deck.slug)
 
   <div
-    className="max-w-sm rounded overflow-hidden shadow-lg bg-white cursor-pointer transition-transform transform hover:scale-105 hover:rotate-2"
+    className=" max-w-sm rounded overflow-hidden shadow-lg bg-white cursor-pointer transition-transform transform hover:scale-105 hover:rotate-2"
     onClick={_ => handleClick()}>
     <div className="p-4">
       <img src={leaderImage} alt="Leader Image" className="w-full  mb-4" />
