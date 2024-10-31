@@ -2,7 +2,6 @@
 let make = () => {
   let url = RescriptReactRouter.useUrl()
   let {isLogged} = LoginContext.useContext()
-  Console.log(isLogged ? "true" : "false")
   <LoginContext.DefaultProvider>
     {
       switch url.path {
@@ -14,7 +13,7 @@ let make = () => {
       } else {
         <Login />
       }
-    | list{"decks"} =>
+      | list{"decks"} =>
       if isLogged {
         <Decks/>
       } else {

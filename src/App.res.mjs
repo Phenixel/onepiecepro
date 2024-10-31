@@ -14,7 +14,6 @@ function App(props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
   var match = LoginContext.useContext();
   var isLogged = match.isLogged;
-  console.log(isLogged ? "true" : "false");
   var match$1 = url.path;
   var tmp;
   if (match$1) {
