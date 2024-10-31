@@ -8,7 +8,8 @@ function PopUp(props) {
   var match = React.useState(function () {
         return true;
       });
-  if (!match[0]) {
+  var isVisible = match[0];
+  if (!isVisible) {
     return null;
   }
   var setIsVisible = match[1];
@@ -34,9 +35,11 @@ function PopUp(props) {
                               })
                           })
                     ],
-                    className: "bg-white p-6 rounded shadow-lg text-center"
+                    className: "bg-white p-6 rounded shadow-lg text-center transform transition duration-300 ease-out " + (
+                      isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"
+                    )
                   }),
-              className: "fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50"
+              className: "fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out"
             });
 }
 
