@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.hero-section {
+  position: relative;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  animation: sway 3.5s infinite alternate ease-in-out;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark filter */
+  z-index: 1;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  color: white;
+  z-index: 2; /* Ensure text is above the filter */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.text-5xl {
+  font-size: 3rem;
 }
 
-@keyframes logo-spin {
+.animate-fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+@keyframes sway {
+  0% {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: -10px;
+    transform: rotate(-1deg);
+  }
+  100% {
+    top: -20px;
+    transform: rotate(1deg);
+  }
 }
