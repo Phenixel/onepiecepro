@@ -36,13 +36,14 @@ let make = () => {
       <div className="text-center p-8 bg-gray-100">
         <h1 className="text-3xl font-bold text-gray-800 mb-4"> {React.string("Liste des decks")} </h1>
         <div className="flex justify-center mb-4 space-x-2">
-          {["", "Red", "Green", "Blue", "Yellow", "Pink"]->Array.map(color =>
+          {["Red", "Green", "Blue", "Yellow", "Pink"]->Array.map(color => {
+            let borderClass = selectedColors->Array.includes(color) ? "border-4 border-gray-400" : ""
             <button
-              className={`p-2 rounded ${selectedColors->Array.includes(color) ? "bg-gray-400" : "bg-gray-200"} hover:bg-gray-300`}
+              className={`p-2 rounded-full w-8 h-8 ${borderClass}`}
               onClick={_ => handleColorClick(color)}>
-              {React.string(color == "" ? "Tous" : color)}
+              <span className={`inline-block w-full h-full rounded-full ${color == "Red" ? "bg-red-500" : color == "Green" ? "bg-green-500" : color == "Blue" ? "bg-blue-500" : color == "Yellow" ? "bg-yellow-500" : "bg-pink-500"}`} />
             </button>
-          )->React.array}
+          })->React.array}
         </div>
         <div>
           {filteredDecks->Array.map(deck =>
