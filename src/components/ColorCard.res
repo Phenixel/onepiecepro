@@ -7,7 +7,8 @@ let make = (~colorNames: array<string>) => {
       | "Green" => "bg-green-500"
       | "Blue" => "bg-blue-500"
       | "Yellow" => "bg-yellow-500"
-      | "Pink" => "bg-pink-500"
+      | "Black" => "bg-black"
+      | "Purple" => "bg-purple-500"
       | _ => "bg-gray-500"
       }
     )
