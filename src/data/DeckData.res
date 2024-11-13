@@ -9,7 +9,7 @@ let decks: array<deck> = [
   {
     slug: "ST-01",
     name: "Straw Hat Crew",
-    userId: "official",
+    userId: "1",
     cards: [
       {
         id: "ST01-001",
