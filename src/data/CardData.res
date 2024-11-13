@@ -656,3 +656,11 @@ let cards: array<card> = [
     imageUrl: "https://en.onepiece-cardgame.com/images/cardlist/card/ST17-004.png?241004",
   },
 ]
+
+let getAllCaracters = (): array<card> => {
+  cards->Array.filter(card => card.typeCard == Character)
+}
+
+let getCaracterByColor = (color: string): array<card> => {
+  cards->Array.filter(card => card.typeCard == Character && card.color == color)
+}

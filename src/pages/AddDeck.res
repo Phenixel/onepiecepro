@@ -2,17 +2,10 @@
 let make = () => {
   let (selectedLeader, setSelectedLeader) = React.useState(() => None)
   let (selectedCards, setSelectedCards) = React.useState(() => [])
-  let allCards = CardData.cards
-  let (filteredCards, setFilteredCards) = React.useState(() => allCards)
-
-  let handleLeaderChange = leaderId => {
-    let leader = allCards->Array.find(card => card.id == leaderId)
-    setSelectedLeader(_ => leader)
-    switch leader {
-    | Some(leader) =>
-      setFilteredCards(_ => allCards->Array.filter(card => card.color == leader.color))
-    | None => setFilteredCards(_ => allCards)
-    }
+  let allCards = CardData.getAllCaracters()
+  let filteredCards = switch selectedLeader {
+  | Some(leader: CardData.card) => CardData.getCaracterByColor(leader.color)
+  | None => allCards
   }
 
   let handleCardClick = cardId => {
@@ -23,6 +16,11 @@ let make = () => {
         [cardId, ...currentCards]
       }
     })
+  }
+
+  let handleLeaderChange = leaderId => {
+    let leader = CardData.cards->Array.find(card => card.id == leaderId)
+    setSelectedLeader(_ => leader)
   }
 
   <Layout>
@@ -48,10 +46,9 @@ let make = () => {
           <select
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="leader"
-            onChange={e => handleLeaderChange(e->ReactEvent.Form.target##value)}
-          >
+            onChange={event => handleLeaderChange(ReactEvent.Form.currentTarget(event)["value"])}>
             <option value=""> {React.string("Sélectionner un leader")} </option>
-            {allCards
+            {CardData.cards
             ->Array.filter(card => card.typeCard == CardData.Leader)
             ->Array.map(leader =>
               <option value={leader.id}>
