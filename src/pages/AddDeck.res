@@ -1,22 +1,29 @@
 @react.component
 let make = () => {
-  let (deckName, setDeckName) = React.useState(() => "")
-  let (selectedColors, setSelectedColors) = React.useState(() => [])
-  let allCards = Array.concatMany(DeckData.decks->Array.map(deck => deck.cards))
+  let (selectedLeader, setSelectedLeader) = React.useState(() => None)
+  let (selectedCards, setSelectedCards) = React.useState(() => [])
+  let allCards = CardData.cards
+  let (filteredCards, setFilteredCards) = React.useState(() => allCards)
 
-  let handleColorChange = color => {
-    setSelectedColors(currentColors =>
-      if (currentColors->Array.includes(color)) {
-        currentColors->Array.filter(c => c != color)
-      } else {
-        currentColors->Array.concat([color])
-      }
-    )
+  let handleLeaderChange = leaderId => {
+    let leader = allCards->Array.find(card => card.id == leaderId)
+    setSelectedLeader(_ => leader)
+    switch leader {
+    | Some(leader) =>
+      setFilteredCards(_ => allCards->Array.filter(card => card.color == leader.color))
+    | None => setFilteredCards(_ => allCards)
+    }
   }
 
-  let filteredCards = allCards->Array.filter(card =>
-    selectedColors->Array.length == 0 || selectedColors->Array.includes(card.color)
-  )
+  let handleCardClick = cardId => {
+    setSelectedCards(currentCards => {
+      if currentCards->Array.includes(cardId) {
+        currentCards->Array.filter(id => id != cardId)
+      } else {
+        [cardId, ...currentCards]
+      }
+    })
+  }
 
   <Layout>
     <div className="home text-center p-8 bg-gray-100">
@@ -32,41 +39,45 @@ let make = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="deckName"
             type_="text"
-            value=deckName
-            onChange={e => setDeckName(ReactEvent.Form.targetValue(e))}
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            {React.string("Couleurs")}
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="leader">
+            {React.string("Choisir un leader")}
           </label>
-          <div className="flex space-x-4">
-            {["Red", "Green", "Blue", "Yellow", "Black"]->Array.map(color =>
-              <label key=color className="inline-flex items-center">
-                <input
-                  type_="checkbox"
-                  value=color
-                  checked=selectedColors->Array.includes(color)
-                  onChange={_ => handleColorChange(color)}
-                />
-                <span className="ml-2">{React.string(color)}</span>
-              </label>
-            )}
-          </div>
+          <select
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="leader"
+            onChange={e => handleLeaderChange(e->ReactEvent.Form.target##value)}
+          >
+            <option value=""> {React.string("Sélectionner un leader")} </option>
+            {allCards
+            ->Array.filter(card => card.typeCard == CardData.Leader)
+            ->Array.map(leader =>
+              <option value={leader.id}>
+                {React.string(leader.name ++ " (" ++ leader.color ++ ")")}
+              </option>
+            )
+            ->React.array}
+          </select>
         </div>
       </form>
       <div className="mt-8">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           {React.string("Cartes disponibles")}
         </h2>
-        <ul>
-          {filteredCards->Array.map(card =>
-            <li key=card.id className="mb-2">
-              <img src=card.imageUrl alt=card.name className="inline-block h-10 w-auto mr-2" />
-              <span>{React.string(card.name)}</span>
-            </li>
-          )}
-        </ul>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+          {filteredCards
+          ->Array.map(card => {
+            let isSelected = selectedCards->Array.includes(card.id)
+            <div
+              className={`card-container cursor-pointer ${isSelected ? "selected" : ""}`}
+              onClick={_ => handleCardClick(card.id)}>
+              <CardDetail card />
+            </div>
+          })
+          ->React.array}
+        </div>
       </div>
     </div>
   </Layout>
