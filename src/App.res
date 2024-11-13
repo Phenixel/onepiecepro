@@ -13,6 +13,10 @@ let make = () => {
       <ProtectedRoute>
         <Decks />
       </ProtectedRoute>
+    | list{"add_deck"} =>
+      <ProtectedRoute>
+        <AddDeck />
+      </ProtectedRoute>
     | list{} => <Home />
     | _ => <NotFound errorType=#notFound />
     }}
