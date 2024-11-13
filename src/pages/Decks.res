@@ -4,7 +4,6 @@
 let make = () => {
   let (selectedColors, setSelectedColors) = React.useState(() => [])
 
-  // Fonction pour filtrer les decks sur la page principale
   let filteredDecks = DeckData.decks->Array.filter(deck =>
     selectedColors->Array.length == 0 || deck.cards->Array.some(card =>
       card.typeCard == CardData.Leader && selectedColors->Array.some(color => card.color->String.includes(color))
@@ -14,13 +13,10 @@ let make = () => {
   let handleColorClick = (color) => {
     setSelectedColors(currentColors => {
       if (currentColors->Array.includes(color)) {
-        // Retirer la couleur si elle est déjà sélectionnée
         currentColors->Array.filter(c => c != color)
       } else if (currentColors->Array.length < 2) {
-        // Ajouter la couleur si moins de 2 sont sélectionnées
         [color, ...currentColors]
       } else {
-        // Si déjà 2 couleurs, ne rien faire ou gérer comme nécessaire
         currentColors
       }
     })
@@ -46,13 +42,14 @@ let make = () => {
     </div>}>
     <div className="home text-center p-8 bg-gray-100">
       <div className="flex justify-center mb-4 space-x-2">
-          {["Red", "Green", "Blue", "Yellow", "Pink"]->Array.map(color => {
+          {["Red", "Green", "Blue", "Yellow", "Black", "Purple"]->Array.map(color => {
             let borderClass = selectedColors->Array.includes(color) ? "border-4 border-gray-400" : ""
-            <button
-              className={`p-2 rounded-full w-8 h-8 ${borderClass}`}
-              onClick={_ => handleColorClick(color)}>
-              <span className={`inline-block w-full h-full rounded-full ${color == "Red" ? "bg-red-500" : color == "Green" ? "bg-green-500" : color == "Blue" ? "bg-blue-500" : color == "Yellow" ? "bg-yellow-500" : "bg-pink-500"}`} />
-            </button>
+       <button
+        className={`p-2 rounded-full w-8 h-8 transform transition-transform duration-300 hover:scale-150 ${borderClass}`}
+        onClick={_ => handleColorClick(color)}>
+        <span className={`inline-block w-full h-full rounded-full ${color == "Red" ? "bg-red-500 hover:" : color == "Green" ? "bg-green-500" : color == "Blue" ? "bg-blue-500" : color == "Yellow" ? "bg-yellow-500" : color == "Pink" ? "bg-pink-500" : color == "Black" ? "bg-black" : color == "Purple" ? "bg-purple-500" : "bg-gray-500"}`} />
+      </button>
+
           })->React.array}
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">

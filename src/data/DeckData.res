@@ -18,7 +18,7 @@ let decks: array<deck> = [
         attribute: "Strike",
         power: 5000,
         counter: 0,
-        color: "Red Pink",
+        color: "Red",
         effect: "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters up to 1 rested DON!! card.",
         typeCharacter: "Supernovas/Straw Hat Crew",
         typeCard: Leader,
