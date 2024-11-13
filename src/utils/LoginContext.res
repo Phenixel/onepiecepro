@@ -1,11 +1,13 @@
 type loginContext = {
   isLogged: bool,
   login: (string, string) => bool,
+  currentUser: option<UsersData.user>,
 }
 
 let context = React.createContext({
   isLogged: false,
   login: (_username, _password) => false,
+  currentUser: None,
 })
 
 module Provider = {
@@ -16,46 +18,32 @@ module DefaultProvider = {
   @react.component
   let make = (~children) => {
     let (isLogged, setIsLogged) = React.useState(() => false)
-    Console.log(isLogged ? "true" : "false")
+    let (currentUser, setCurrentUser) = React.useState((): option<UsersData.user> => None)
 
-    open Dom.Storage2
-
-    React.useEffect(() => {
-      localStorage
-      ->getItem("isLogged")
-      ->Option.forEach(value => {
-        if value === "true" {
-          setIsLogged(_ => true)
-        }
-      })
-      None
-    }, [])
+    let login = (username, password) => {
+      switch UsersData.users->Belt.Array.getBy(user => user.name == username && user.password == password) {
+      | Some(user) =>
+        setIsLogged(_ => true)
+        setCurrentUser(_ => Some(user))
+        Console.log("Logged in: " ++ user.name)
+        true
+      | None =>
+        Console.log("Login failed")
+        false
+      }
+    }
 
     <Provider
       value={{
         isLogged,
-        login: (username, password) => {
-          UsersData.users
-          ->Array.some(user => user.name == username && user.password == password)
-          ->(
-            result => {
-              if result {
-                Console.log("Logged in")
-                setIsLogged(_ => true)
-                localStorage->setItem("isLogged", "true")
-              } else {
-                Console.log("Not logged in")
-                setIsLogged(_prev => false)
-              }
-              result
-            }
-          )
-        },
+        login,
+        currentUser,
       }}>
       {children}
     </Provider>
   }
 }
+
 let useContext = () => {
   React.useContext(context)
 }
