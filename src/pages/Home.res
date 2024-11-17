@@ -2,8 +2,6 @@
 
 @react.component
 let make = () => {
-  let {isLogged} = LoginContext.useContext()
-
   <Layout
     header={<div className="hero-section">
       <img
@@ -21,7 +19,6 @@ let make = () => {
       </div>
     </div>}>
     <div className="home text-center p-8 bg-gray-100">
-      <span> {React.string("isLogged: " ++ (isLogged ? "true" : "false"))} </span>
       <ListDeck />
     </div>
   </Layout>
