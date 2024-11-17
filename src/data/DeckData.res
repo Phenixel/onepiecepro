@@ -9,7 +9,7 @@ let decks: array<deck> = [
   {
     slug: "ST-01",
     name: "Straw Hat Crew",
-    userId: "official",
+    userId: "1",
     cardIds: [
       "ST01-001",
       "ST01-002",
@@ -111,4 +111,8 @@ let getLeaderImage = (deckSlug: string): string => {
     ->Option.getOr("default-image-url.jpg")
   | None => "default-image-url.jpg"
   }
+}
+
+let getDeckByUser = (userId: string): array<deck> => {
+  decks->Array.filter(deck => deck.userId == userId)
 }
