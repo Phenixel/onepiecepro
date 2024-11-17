@@ -13,6 +13,10 @@ let make = () => {
       <ProtectedRoute>
         <Decks />
       </ProtectedRoute>
+    | list{"mon-navire"} =>
+      <ProtectedRoute>
+        <MonNavire />
+      </ProtectedRoute>
     | list{"add_deck"} =>
       <ProtectedRoute>
         <AddDeck />
