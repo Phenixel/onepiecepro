@@ -1,7 +1,5 @@
 @react.component
 let make = () => {
-  // Fonction pour naviguer
-
   <nav className="bg-white shadow-md">
     <div className="container mx-auto flex items-center justify-between p-4">
       <div
@@ -12,33 +10,26 @@ let make = () => {
           className="h-10 w-auto"
         />
       </div>
-      <ul className="flex space-x-4">
+      <ul className="flex items-center space-x-4">
         <li>
           <button
-            className="text-gray-700 hover:text-blue-500"
-            onClick={_ => RescriptReactRouter.push("/connexion")}>
-            {React.string("Sing Up")}
+            className="text-gray-700 hover:text-blue-500 transition-colors"
+            onClick={_ => RescriptReactRouter.push("/decks")}>
+            {React.string("Decks")}
           </button>
         </li>
         <li>
           <button
-            className="text-gray-700 hover:text-blue-500"
-            onClick={_ => RescriptReactRouter.push("/login")}>
-            {React.string("Login")}
-          </button>
-        </li>
-        <li>
-          <button
-            className="text-gray-700 hover:text-blue-500"
+            className="text-gray-700 hover:text-blue-500 transition-colors"
             onClick={_ => RescriptReactRouter.push("/mon-navire")}>
             {React.string("Mon Navire")}
           </button>
         </li>
         <li>
           <button
-            className="text-gray-700 hover:text-blue-500"
-            onClick={_ => RescriptReactRouter.push("/decks")}>
-            {React.string("Decks")}
+            className="p-2 bg-blue-500 text-white rounded mb-2 hover:bg-blue-600 transition-colors"
+            onClick={_ => RescriptReactRouter.push("/add_deck")}>
+            {React.string("Ajouter un deck")}
           </button>
         </li>
       </ul>
